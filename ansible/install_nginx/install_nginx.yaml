@@ -1,0 +1,16 @@
+---
+- name: 部署nginx
+  hosts: node2
+  become: yes
+
+  tasks:
+    - name: 安装nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: 启动nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
