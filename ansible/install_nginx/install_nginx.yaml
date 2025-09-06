@@ -1,6 +1,6 @@
 ---
 - name: 部署nginx
-  hosts: all
+  hosts: node1
   vars: 
     ansible_user: root
   become: yes
