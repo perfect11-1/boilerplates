@@ -1,6 +1,8 @@
 ---
 - name: 部署nginx
   hosts: all
+  vars: 
+    ansible_user: root
   become: yes
 
   tasks:
