@@ -1,6 +1,6 @@
 ---
 - name: 部署nginx
-  hosts: node2
+  hosts: all
   become: yes
 
   tasks:
