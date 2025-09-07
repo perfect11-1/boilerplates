@@ -12,9 +12,17 @@
       yum:
         name: nginx
         state: present
-
+        update_cache: yes #更新系统的软件包缓存
+      
+      when: inventory_hostname == 'node1' #当目标主机数据node1主机组时
     - name: 启动nginx
       service:
         name: nginx
-        state: started
+        state: stopped
+        enabled: yes
+      when: inventory_hostname == 'node2' and ansible_distribution == 'Rocky' #当目标主机数据node2主机组并且时rocky linux时
+    - name: 启动nginx
+      service:
+        name: nginx
+        state: stopped
         enabled: yes
