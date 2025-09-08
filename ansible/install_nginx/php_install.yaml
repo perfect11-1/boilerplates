@@ -1,0 +1,18 @@
+---
+- name: 安装php和配置php
+  hosts: node1
+  tasks:
+    - name: 安装php模块
+      yum:
+        name:
+          - php-fpm
+          - php-mysqlnd
+          - php-mbstring
+          - php-gd
+          - php-xml
+        state: present
+    - name: 启动php
+      service:
+        name: php-fpm
+        state: started
+        enabled: yes
