@@ -1,0 +1,21 @@
+---
+- name: 部署nginx #部署nginx
+  hosts: 
+    - node1  #指定目标主机组node1
+    - node2  #指定目标主机组node2
+  vars: 
+    ansible_user: root  #指定用于连接远程主机的用户名
+    ansible_ssh_private_key_file: /root/.ssh/id_rsa  #指定用于连接远程主机的私钥文件
+  #因为上面ansible_user已指定连接远程主机用root了，所以这里无需提权到root.此外下面三个变量在/etc/ansible/ansible.cfg中也都可以配置
+  # become: yes    #使用sudo提权
+  # become_method: sudo #指定提权方法为sudo
+  # become_user: root  #指定提权后的用户名
+
+  tasks:
+    - name: 卸载nginx
+      yum:
+        name: nginx  #指定要卸载的软件包名称
+        state: absent  #指定软件包的状态，absent表示卸载，如果已经卸载则不做任何操作
+        autoremove: yes  #指定是否自动卸载依赖的软件包
+      when: inventory_hostname == 'node1' #当目标主机数据node1主机组时
+
