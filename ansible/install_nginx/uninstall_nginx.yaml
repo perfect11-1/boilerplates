@@ -17,5 +17,5 @@
         name: nginx  #指定要卸载的软件包名称
         state: absent  #指定软件包的状态，absent表示卸载，如果已经卸载则不做任何操作
         autoremove: yes  #指定是否自动卸载依赖的软件包
-      when: inventory_hostname == 'node1' #当目标主机数据node1主机组时
+
 
