@@ -17,16 +17,10 @@
         name: nginx  #指定要安装的软件包名称
         state: present  #指定软件包的状态，present表示安装，如果已经安装则不做任何操作
         update_cache: yes #更新系统的软件包缓存
-      
-      when: inventory_hostname == 'node1' #当目标主机数据node1主机组时
+
     - name: 启动nginx #启动nginx
       service:
         name: nginx  #指定要启动的服务名称
         state: started  #指定服务的状态，started表示启动，如果已经启动则不做任何操作
         enabled: yes  #指定服务是否开机自启
-      when: inventory_hostname == 'node2' and ansible_distribution == 'Rocky' #当目标主机数据node2主机组并且时rocky linux时
-    - name: 启动nginx
-      service:
-        name: nginx  #指定要启动的服务名称
-        state: started  #指定服务的状态，started表示启动，如果已经启动则不做任何操作
-        enabled: yes  #指定服务是否开机自启
+
